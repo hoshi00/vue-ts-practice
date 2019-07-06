@@ -1,18 +1,23 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <p>{{ greetText }} </p>
+    <MyButton :greet="greetText" @clicked="onMyButtonClicked"></MyButton>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+  import { Component, Vue } from 'vue-property-decorator';
+  import MyButton from "@/components/MyButton.vue";
 
-@Component({
-  components: {
-    HelloWorld,
-  },
-})
-export default class Home extends Vue {}
+  @Component({
+    components: {
+      MyButton,
+    },
+  })
+  export default class Home extends Vue {
+    public greetText: string = "Hello";
+    public onMyButtonClicked(){
+      this.greetText = "こんにちわ";
+    }
+  }
 </script>
